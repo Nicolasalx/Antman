@@ -12,14 +12,6 @@ SRCFILE		=	file/count_nb_line.c \
 				file/my_filelen.c \
 				file/my_open_file.c
 
-SRCGRAPHICAL=	graphical/animated_sprite.c \
-				graphical/sprite.c \
-				graphical/music.c \
-				graphical/time.c \
-				graphical/mouse_is_over.c \
-				graphical/randint.c \
-				graphical/texture.c
-
 SRCMALLOC	=	malloc/board.c \
 				malloc/str.c \
 				malloc/struct_str.c \
@@ -49,8 +41,7 @@ SRCSTRING	=	string/my_putstr.c \
 				string/my_swap_char.c \
 				string/my_revstr.c
 
-SRC			=	$(SRCGRAPHICAL) \
-				$(SRCMALLOC) \
+SRC			=	$(SRCMALLOC) \
 				$(SRCNUMBER) \
 				$(SRCSTRING) \
 				$(SRCFILE)
