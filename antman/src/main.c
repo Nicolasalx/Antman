@@ -27,5 +27,7 @@ int main(int argc, char **argv)
         file_content.occur_char[i], file_content.character[i]);
     }
 
+    free_str(file_content.character);
+    free_array(file_content.occur_char);
     return 0;
 }
