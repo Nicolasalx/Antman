@@ -6,7 +6,9 @@
 ##
 
 SRC			=	src/main.c \
-				src/error_manager.c
+				src/error_manager.c \
+				src/check_arg_validity.c \
+				src/analyse_file_content.c
 
 CFLAGS		=	-W -Wall -Wextra -I ../include
 

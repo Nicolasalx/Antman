@@ -23,6 +23,15 @@ void print_error(int error)
     case ERROR:
         write(2, "error\n", 6);
         break;
+    case TOO_MUCH_OR_MISSING_ARG:
+        write(2, "Too much or missing arguments\n", 30);
+        break;
+    case INVALID_OPTION:
+        write(2, "Invalid option\n", 15);
+        break;
+    case INVALID_FILE:
+        write(2, "Invalid file\n", 13);
+        break;
     default:
         write(2, "Unnamed error\n", 14);
         break;

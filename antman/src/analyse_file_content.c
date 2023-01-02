@@ -1,0 +1,33 @@
+/*
+** EPITECH PROJECT, 2023
+** analyse_file_content
+** File description:
+** analyse_file_content
+*/
+
+#include "antman.h"
+#include "my_file.h"
+#include "my_string.h"
+#include "my_malloc.h"
+
+void analyse_file_content(char *filepath, file_info_t *file_content)
+{
+    int file = open_file(filepath);
+    if (file == -1) {
+        print_error(error_manager(INVALID_FILE));
+        return;
+    }
+    char *buff = my_file_to_str(filepath, file);
+
+    int j = 0;
+    ini_str_to_zero(file_content->character, ASCII_RANGE);
+    for (int i = 0; buff[i] != '\0'; ++i) {
+        if (is_in_str(buff[i], file_content->character) == 0) {
+            file_content->character[j] = buff[i];
+            file_content->occur_char[j] = count_occur(buff, buff[i]);
+            ++ j;
+        }
+    }
+    file_content->nb_diff_char = j;
+    free_str(buff);
+}

@@ -6,15 +6,26 @@
 */
 
 #include "antman.h"
-#include "my_file.h"
-#include "my_malloc.h"
 #include "my_string.h"
+#include "my_malloc.h"
+#include <stdio.h>
 
 int main(int argc, char **argv)
 {
-    int file = open_file(argv[1]);
-    char *buff = my_file_to_str(argv[1], file);
-    my_putstr(buff);
-    my_putstr("\n");
+    if (check_arg_validity(argc, argv) != 0)
+        return 84;
+
+    file_info_t file_content;
+    file_content.character = malloc_str(ASCII_RANGE);
+    file_content.occur_char = malloc_array(ASCII_RANGE);
+    analyse_file_content(argv[1], &file_content);
+    if (error_manager(0) != 0)
+        return 84;
+
+    for (int i = 0; i < file_content.nb_diff_char; ++i) {
+        printf("Il y a %d fois le char '%c'\n",
+        file_content.occur_char[i], file_content.character[i]);
+    }
+
     return 0;
 }

@@ -9,6 +9,9 @@
     #define MY_ERROR
 
     #define ERROR -1
+    #define TOO_MUCH_OR_MISSING_ARG 1
+    #define INVALID_OPTION 2
+    #define INVALID_FILE 3
 
 int error_manager(int error_detected);
 void print_error(int error);
