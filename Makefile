@@ -5,30 +5,27 @@
 ## Makefile
 ##
 
-SRC			=	src/main.c \
-				src/error_manager.c
+SRC_ZIP		=	antman
+SRC_UNZIP	=	giantman
 
-CFLAGS		=	-W -Wall -Wextra -I ./include
+NAME_ZIP		=	antman
+NAME_UNZIP		=	giantman
 
-NAME		=	a.out
+$(NAME):
+	cd $(SRC_ZIP) && $(MAKE)
+	cd $(SRC_UNZIP) && $(MAKE)
 
-LIBNAME		=	lib/my_lib.a
-
-OBJ			=	$(SRC:.c=.o)
-
-$(NAME): $(OBJ)
-	cd lib/ && $(MAKE)
-	gcc -o $(NAME) $(SRC) $(LIBNAME) $(CFLAGS)
-
-all: $(NAME)
+all:
+	cd $(SRC_ZIP) && $(MAKE) all
+	cd $(SRC_UNZIP) && $(MAKE) all
 
 clean:
-	cd lib/ && $(MAKE) clean
-	rm -f $(OBJ)
+	cd $(SRC_ZIP) && $(MAKE) clean
+	cd $(SRC_UNZIP) && $(MAKE) clean
 
 fclean: clean
-	cd lib/ && $(MAKE) fclean
-	rm -f $(NAME)
+	cd $(SRC_ZIP) && $(MAKE) fclean
+	cd $(SRC_UNZIP) && $(MAKE) fclean
 
 re: fclean all
 

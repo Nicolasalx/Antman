@@ -1,13 +1,13 @@
 /*
 ** EPITECH PROJECT, 2022
-** my
+** antman
 ** File description:
-** my
+** antman
 */
 
-#ifndef MY_H_
-    #define MY_H_
+#ifndef ANTMAN
+    #define ANTMAN
 
     #include "my_error.h"
 
-#endif /* !MY_H_ */
+#endif /* !ANTMAN */
