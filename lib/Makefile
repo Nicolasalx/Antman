@@ -25,7 +25,8 @@ SRCNUMBER	=	number/my_get_nb.c \
 				number/max_value.c \
 				number/min_value.c \
 				number/count_nb_digit.c \
-				number/my_nb_to_str.c
+				number/my_nb_to_str.c \
+				number/my_swap.c
 
 SRCSTRING	=	string/my_putstr.c \
 				string/my_strcat.c \

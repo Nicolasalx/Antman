@@ -8,7 +8,8 @@
 SRC			=	src/main.c \
 				src/error_manager.c \
 				src/check_arg_validity.c \
-				src/analyse_file_content.c
+				src/analyse_file_content.c \
+				src/my_sort.c
 
 CFLAGS		=	-W -Wall -Wextra -I ../include
 

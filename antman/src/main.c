@@ -15,19 +15,18 @@ int main(int argc, char **argv)
     if (check_arg_validity(argc, argv) != 0)
         return 84;
 
-    file_info_t file_content;
-    file_content.character = malloc_str(ASCII_RANGE);
-    file_content.occur_char = malloc_array(ASCII_RANGE);
-    analyse_file_content(argv[1], &file_content);
+    file_info_t file_data;
+    analyse_file_content(argv[1], &file_data);
     if (error_manager(0) != 0)
         return 84;
+    my_sort(file_data.occur_char, file_data.character, file_data.nb_diff_char);
 
-    for (int i = 0; i < file_content.nb_diff_char; ++i) {
+    for (int i = 0; i < file_data.nb_diff_char; ++i) {
         printf("Il y a %d fois le char '%c'\n",
-        file_content.occur_char[i], file_content.character[i]);
+        file_data.occur_char[i], file_data.character[i]);
     }
 
-    free_str(file_content.character);
-    free_array(file_content.occur_char);
+    free_str(file_data.character);
+    free_array(file_data.occur_char);
     return 0;
 }

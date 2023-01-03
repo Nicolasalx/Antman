@@ -21,5 +21,6 @@ typedef struct file_info_t {
 
 int check_arg_validity(int argc, char **argv);
 void analyse_file_content(char *filepath, file_info_t *file_content);
+void my_sort(int *array, char *str, int size_array);
 
 #endif /* !ANTMAN */
