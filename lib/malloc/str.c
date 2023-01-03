@@ -14,6 +14,7 @@ char *malloc_str(int size_str)
     for (i = 0; i < size_str; ++i) {
         str[i] = '\0';
     }
+    str[i] = '\0';
     return str;
 }
 
