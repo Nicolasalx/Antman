@@ -48,5 +48,6 @@ tree_t *create_tree(file_info_t *file_data);
 list_t *create_all_leaf(file_info_t *file_data);
 list_t *ini_list(void);
 void append_list(list_t *list, char character, int value);
+void display_list(list_t *list);
 
 #endif /* !ANTMAN */

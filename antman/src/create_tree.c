@@ -10,11 +10,6 @@
 tree_t *create_tree(file_info_t *file_data)
 {
     list_t *leaf_list = create_all_leaf(file_data);
-
-    return leaf_list;
+    display_list(leaf_list);
+    return;
 }
-
-// list_t *malist = initialisation();
-// remplir_list(list, size, malist);
-// afficherlist(malist);
-// return 0;
