@@ -11,7 +11,8 @@ SRC			=	src/main.c \
 				src/analyse_file_content.c \
 				src/my_sort.c \
 				src/create_all_leaf.c \
-				src/create_tree.c
+				src/create_tree.c \
+				src/func_linked_list.c
 
 CFLAGS		=	-W -Wall -Wextra -I ../include
 

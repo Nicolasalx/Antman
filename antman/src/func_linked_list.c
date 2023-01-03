@@ -1,36 +1,39 @@
 /*
 ** EPITECH PROJECT, 2023
-** func_linked_list.c
+** func_linked_list
 ** File description:
 ** func_linked_list
 */
 
 #include <stdlib.h>
 #include "antman.h"
+#include "my_string.h"
+#include "my_number.h"
 
 list_t *ini_list(void)
 {
-    list_t *list = malloc(sizeof(*list));
-    node_t *new_node = malloc(sizeof(*new_node));
-
-    if (list == NULL || new_node == NULL) {
-        exit(84);
-    }
-    new_node->value = 0;
-    new_node->next = NULL;
-    list->head = new_node;
+    list_t *list = malloc(sizeof(list_t));
+    list->head = NULL;
     return list;
 }
 
-void insert(list_t *list, int new_value)
+void append_list(list_t *list, char character, int value)
 {
-    node_t *new_node = malloc(sizeof(*new_node));
-    if (list == NULL || new_node == NULL) {
-        exit(84);
+    node_t *new_node = malloc(sizeof(node_t));
+
+    new_node->character = character;
+    new_node->value = value;
+    new_node->next = NULL;
+
+    if (list->head == NULL) {
+        list->head = new_node;
+        return;
     }
-    new_node->value = new_value;
-    new_node->next = list->head;
-    list->head = new_node;
+    node_t *current = list->head;
+    while (current->next != NULL) {
+        current = current->next;
+    }
+    current->next = new_node;
 }
 
 void delete_list(list_t *list)
@@ -48,24 +51,16 @@ void delete_list(list_t *list)
 void display_list(list_t *list)
 {
     if (list == NULL) {
-        exit(84);
+        return;
     }
 
     node_t *current = list->head;
 
     while (current != NULL)
     {
-        printf("%d -> ", current->value);
+        my_putstr(my_nb_to_str(current->value));
+        my_putstr(" -> ");
         current = current->next;
     }
-    printf("NULL\n");
-}
-
-void fill_list(int array[], int size_array, list_t *list)
-{
-    char str[3];
-    for (int x = 0; x < size_array; ++x) {
-        sprintf(str, "%d", array[x]);
-        insertion(list, atoi(str));
-    }
+    my_putstr("NULL\n");
 }

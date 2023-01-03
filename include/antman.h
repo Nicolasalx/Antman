@@ -44,6 +44,9 @@ struct list_t {
 int check_arg_validity(int argc, char **argv);
 void analyse_file_content(char *filepath, file_info_t *file_content);
 void my_sort(int *array, char *str, int size_array);
-node_t **create_all_leaf(file_info_t *file_data);
+tree_t *create_tree(file_info_t *file_data);
+list_t *create_all_leaf(file_info_t *file_data);
+list_t *ini_list(void);
+void append_list(list_t *list, char character, int value);
 
 #endif /* !ANTMAN */
