@@ -8,9 +8,6 @@
 SRC_ZIP		=	antman
 SRC_UNZIP	=	giantman
 
-NAME_ZIP	=	antman
-NAME_UNZIP	=	giantman
-
 $(MAKE):
 	cd $(SRC_ZIP) && $(MAKE)
 	cd $(SRC_UNZIP) && $(MAKE)

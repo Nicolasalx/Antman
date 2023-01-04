@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2023
-** func_linked_list
+** func_linked_head
 ** File description:
-** func_linked_list
+** func_linked_head
 */
 
 #include <stdlib.h>
@@ -10,51 +10,76 @@
 #include "my_string.h"
 #include "my_number.h"
 
-list_t *ini_list(void)
+node_t *ini_list(void)
 {
-    list_t *list = malloc(sizeof(list_t));
-    list->head = NULL;
-    return list;
+    node_t *head = malloc(sizeof(node_t *));
+    head = NULL;
+    return head;
 }
 
-void append_list(list_t *list, char character, int value)
+void append_node(node_t **head, char character, int value, int type)
 {
     node_t *new_node = malloc(sizeof(node_t));
 
     new_node->character = character;
     new_node->value = value;
+    new_node->type = type;
     new_node->next = NULL;
 
-    if (list->head == NULL) {
-        list->head = new_node;
+    if (*head == NULL) {
+        *head = new_node;
         return;
     }
-    node_t *current = list->head;
+    node_t *current = *head;
     while (current->next != NULL) {
         current = current->next;
     }
     current->next = new_node;
 }
 
-void delete_list(list_t *list)
+void insert_node(node_t **head, int value, int type, int index)
 {
-    if (list == NULL) {
-        exit(84);
+    node_t *new_node = malloc(sizeof(node_t));
+    new_node->value = value;
+    new_node->type = type;
+    new_node->next = NULL;
+
+    node_t *current = *head;
+    if (*head == NULL) {
+        *head = new_node;
+        return;
     }
-    if (list->head != NULL) {
-        node_t *aSupprimer = list->head;
-        list->head = list->head->next;
-        free(aSupprimer);
+    if (index == 0) {
+        new_node->next = *head;
+        *head = new_node;
+    } else {
+        for (int i = 0; i < (index - 1) && current->next != NULL; i++) {
+            current = current->next;
+        }
+        new_node->next = current->next;
+        current->next = new_node;
     }
 }
 
-void display_list(list_t *list)
+/*void delete_list(node_t **head)
 {
-    if (list == NULL) {
+    if (head == NULL) {
+        return;
+    }
+    if (head != NULL) {
+        node_t *aSupprimer = head;
+        head = head;
+        free(aSupprimer);
+    }
+}*/
+
+/*void display_list(node_t **head)
+{
+    if (head == NULL) {
         return;
     }
 
-    node_t *current = list->head;
+    node_t *current = head;
 
     while (current != NULL)
     {
@@ -63,4 +88,4 @@ void display_list(list_t *list)
         current = current->next;
     }
     my_putstr("NULL\n");
-}
+}*/

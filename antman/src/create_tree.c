@@ -7,9 +7,9 @@
 
 #include "antman.h"
 
-tree_t *create_tree(file_info_t *file_data)
+node_t *create_tree(file_info_t *file_data)
 {
-    list_t *leaf_list = create_all_leaf(file_data);
-    display_list(leaf_list);
-    return;
+    node_t *head_leaf_list = create_all_leaf(file_data);
+
+    return head_leaf_list;
 }

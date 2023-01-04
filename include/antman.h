@@ -31,23 +31,13 @@ struct node_t {
     node_t *next;
 };
 
-typedef struct tree_t tree_t;
-struct tree_t {
-    node_t *start;
-};
-
-typedef struct list_t list_t;
-struct list_t {
-    node_t *head;
-};
-
 int check_arg_validity(int argc, char **argv);
 void analyse_file_content(char *filepath, file_info_t *file_content);
 void my_sort(int *array, char *str, int size_array);
-tree_t *create_tree(file_info_t *file_data);
-list_t *create_all_leaf(file_info_t *file_data);
-list_t *ini_list(void);
-void append_list(list_t *list, char character, int value);
-void display_list(list_t *list);
+node_t *create_all_leaf(file_info_t *file_data);
+node_t *create_tree(file_info_t *file_data);
+node_t *ini_list(void);
+void append_node(node_t **head, char character, int value, int type);
+void insert_node(node_t **head, int value, int type, int index);
 
 #endif /* !ANTMAN */

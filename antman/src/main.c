@@ -20,8 +20,7 @@ int main(int argc, char **argv)
         return 84;
     my_sort(file_data.occur_char, file_data.character, file_data.nb_diff_char);
 
-    //tree_t *tree =
-    create_tree(&file_data);
+    node_t *head_tree = create_tree(&file_data);
 
     free_str(file_data.character);
     free_array(file_data.occur_char);

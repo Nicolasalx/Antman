@@ -19,7 +19,7 @@ OBJ			=	$(SRC:.c=.o)
 
 $(NAME): $(OBJ)
 	cd $(SRCLIB) && $(MAKE)
-	gcc -o $(NAME) $(SRC) $(LIBNAME) $(CFLAGS)
+	gcc -o $(NAME) $(OBJ) $(LIBNAME) $(CFLAGS)
 
 all: $(NAME)
 
