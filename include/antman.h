@@ -31,13 +31,21 @@ struct node_t {
     node_t *next;
 };
 
+// Error Case
 int check_arg_validity(int argc, char **argv);
 void analyse_file_content(char *filepath, file_info_t *file_content);
+
+// Linked list and tree
 void my_sort(int *array, char *str, int size_array);
 node_t *create_all_leaf(file_info_t *file_data);
 node_t *create_tree(file_info_t *file_data);
 node_t *ini_list(void);
 void append_node(node_t **head, char character, int value, int type);
 void insert_node(node_t **head, int value, int type, int index);
+
+// Define algo
+int total_occurence(file_info_t *file_data);
+int file_def(file_info_t *file_data);
+void def_algo(file_info_t *file_data);
 
 #endif /* !ANTMAN */
