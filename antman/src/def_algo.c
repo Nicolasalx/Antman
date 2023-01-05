@@ -1,4 +1,12 @@
+/*
+** EPITECH PROJECT, 2023
+** def_algo
+** File description:
+** def_algo
+*/
+
 #include "antman.h"
+#include "my_string.h"
 
 int total_occurence(file_info_t *file_data)
 {
@@ -25,7 +33,7 @@ void def_algo(file_info_t *file_data)
         my_putstr("Fichier petit");
 
     if (file_def(file_data) == 1) {
-        node_t *head_tree = create_tree(file_data);
+//        node_t *head_tree = create_tree(file_data);
         my_putstr("Fichier grand");
     }
 }

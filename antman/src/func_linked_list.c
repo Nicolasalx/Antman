@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2023
-** func_linked_head
+** func_linked_list
 ** File description:
-** func_linked_head
+** func_linked_list
 */
 
 #include <stdlib.h>
@@ -15,6 +15,13 @@ node_t *ini_list(void)
     node_t *head = malloc(sizeof(node_t *));
     head = NULL;
     return head;
+}
+
+node_t *create_node(void)
+{
+    node_t *new_node = malloc(sizeof(node_t));
+    new_node->next = NULL;
+    return new_node;
 }
 
 void append_node(node_t **head, char character, int value, int type)
@@ -37,28 +44,41 @@ void append_node(node_t **head, char character, int value, int type)
     current->next = new_node;
 }
 
-void insert_node(node_t **head, int value, int type, int index)
+void insert_node(node_t **head, node_t *node, int index)
 {
-    node_t *new_node = malloc(sizeof(node_t));
-    new_node->value = value;
-    new_node->type = type;
-    new_node->next = NULL;
-
     node_t *current = *head;
     if (*head == NULL) {
-        *head = new_node;
+        *head = node;
         return;
     }
     if (index == 0) {
-        new_node->next = *head;
-        *head = new_node;
+        node->next = *head;
+        *head = node;
     } else {
-        for (int i = 0; i < (index - 1) && current->next != NULL; i++) {
+        for (int i = 0; i < (index - 1) && current->next != NULL; ++i) {
             current = current->next;
         }
-        new_node->next = current->next;
-        current->next = new_node;
+        node->next = current->next;
+        current->next = node;
     }
+}
+
+node_t *remove_node(node_t **head, node_t *node)
+{
+    node_t *current = *head;
+    if (*head == NULL) {
+        return node;
+    }
+    if (*head == node) {
+        *head = node->next;
+    } else {
+        while (current->next != node && current->next != NULL) {
+            current = current->next;
+        }
+        current->next = node->next;
+    }
+    node->next = NULL;
+    return node;
 }
 
 /*void delete_list(node_t **head)

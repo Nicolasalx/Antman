@@ -41,7 +41,8 @@ node_t *create_all_leaf(file_info_t *file_data);
 node_t *create_tree(file_info_t *file_data);
 node_t *ini_list(void);
 void append_node(node_t **head, char character, int value, int type);
-void insert_node(node_t **head, int value, int type, int index);
+void insert_node(node_t **head, node_t *node, int index);
+node_t *remove_node(node_t **head, node_t *node);
 
 // Define algo
 int total_occurence(file_info_t *file_data);
