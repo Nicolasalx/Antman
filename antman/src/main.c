@@ -11,18 +11,23 @@
 
 int main(int argc, char **argv)
 {
+    file_info_t file_data;
     if (check_arg_validity(argc, argv) != 0)
         return 84;
 
-    file_info_t file_data;
     analyse_file_content(argv[1], &file_data);
     if (error_manager(0) != 0)
         return 84;
-    def_algo(&file_data);
     my_sort(file_data.occur_char, file_data.character, file_data.nb_diff_char);
 
-    
-    free_str(file_data.character);
-    free_array(file_data.occur_char);
+    if (file_def(&file_data) == SMALL_FILE) {
+        my_putstr("Fichier petit\n");
+        // call algo small file
+    } else {
+        my_putstr("Fichier grand\n");
+        node_t *head_tree = create_tree(&file_data);
+    }
+
+    free_all_data(&file_data);
     return 0;
 }

@@ -13,6 +13,8 @@
     #define ASCII_RANGE 256
     #define LEAF 0
     #define BRANCH 1
+    #define SMALL_FILE 0
+    #define BIG_FILE 1
 
 typedef struct file_info_t {
     int nb_diff_char;
@@ -48,5 +50,7 @@ node_t *remove_node(node_t **head, node_t *node);
 int total_occurence(file_info_t *file_data);
 int file_def(file_info_t *file_data);
 void def_algo(file_info_t *file_data);
+
+void free_all_data(file_info_t *file_data);
 
 #endif /* !ANTMAN */
