@@ -12,8 +12,7 @@
 
 node_t *ini_list(void)
 {
-    node_t *head = malloc(sizeof(node_t *));
-    head = NULL;
+    node_t *head = NULL;
     return head;
 }
 
@@ -32,6 +31,8 @@ void append_node(node_t **head, char character, int value, int type)
     new_node->value = value;
     new_node->type = type;
     new_node->next = NULL;
+    new_node->left = NULL;
+    new_node->right = NULL;
 
     if (*head == NULL) {
         *head = new_node;

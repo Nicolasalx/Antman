@@ -20,9 +20,9 @@ void analyse_file_content(char *filepath, file_info_t *file_data)
     char *buff = my_file_to_str(filepath, file);
 
     int j = 0;
-    ini_str_to_zero(file_data->character, ASCII_RANGE);
     file_data->character = malloc_str(ASCII_RANGE);
     file_data->occur_char = malloc_array(ASCII_RANGE);
+    ini_str_to_zero(file_data->character, ASCII_RANGE);
     for (int i = 0; buff[i] != '\0'; ++i) {
         if (is_in_str(buff[i], file_data->character) == 0) {
             file_data->character[j] = buff[i];
