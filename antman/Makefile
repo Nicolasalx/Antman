@@ -13,7 +13,7 @@ SRC			=	src/main.c \
 				src/create_all_leaf.c \
 				src/create_tree.c \
 				src/func_linked_list.c	\
-				src/def_algo.c \
+				src/def_file_category.c \
 				src/free_all_data.c
 
 CFLAGS		=	-W -Wall -Wextra -I ../include

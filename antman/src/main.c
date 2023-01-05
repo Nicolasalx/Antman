@@ -7,7 +7,6 @@
 
 #include "antman.h"
 #include "my_string.h"
-#include "my_malloc.h"
 
 int main(int argc, char **argv)
 {
@@ -20,7 +19,7 @@ int main(int argc, char **argv)
         return 84;
     my_sort(file_data.occur_char, file_data.character, file_data.nb_diff_char);
 
-    if (file_def(&file_data) == SMALL_FILE) {
+    if (def_file_category(&file_data) == SMALL_FILE) {
         my_putstr("Fichier petit\n");
         // call algo small file
     } else {

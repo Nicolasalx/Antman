@@ -11,10 +11,13 @@
     #include "my_error.h"
 
     #define ASCII_RANGE 256
+
     #define LEAF 0
     #define BRANCH 1
+
     #define SMALL_FILE 0
     #define BIG_FILE 1
+    #define CAP_BIG_FILE 8
 
 typedef struct file_info_t {
     int nb_diff_char;
@@ -47,9 +50,7 @@ void insert_node(node_t **head, node_t *node, int index);
 node_t *remove_node(node_t **head, node_t *node);
 
 // Define algo
-int total_occurence(file_info_t *file_data);
-int file_def(file_info_t *file_data);
-void def_algo(file_info_t *file_data);
+int def_file_category(file_info_t *file_data);
 
 void free_all_data(file_info_t *file_data);
 
