@@ -9,6 +9,15 @@
 #include "my_malloc.h"
 #include <stdlib.h>
 
+int is_left_or_right(node_t *node)
+{
+    if (node->parent->left == node) {
+        return 0;
+    } else {
+        return 1;
+    }
+}
+
 int *count_size_path_leaf(file_info_t *file_data, tree_data_t *tree)
 {
     int *size_path = malloc_array(file_data->nb_diff_char);

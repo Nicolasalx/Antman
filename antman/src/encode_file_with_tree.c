@@ -48,12 +48,3 @@ char *change_file_content_rep(file_info_t *file_data, char **leaf_path)
     }
     return new_file_rep;
 }
-
-char **encode_file_with_tree(file_info_t *file_data, tree_data_t *tree)
-{
-    char **leaf_path = get_all_leaf_path(file_data, tree);
-    char *new_file_rep = change_file_content_rep(file_data, leaf_path);
-    free_board(leaf_path, file_data->nb_diff_char); // ! remove si opti
-    my_putstr(new_file_rep);
-    free_str(new_file_rep);
-}

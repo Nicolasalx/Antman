@@ -10,25 +10,12 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int is_left_or_right(node_t *node)
+void encode_tree(char **leaf_path)
 {
-    if (node->parent->left == node) {
-        return 0;
-    } else {
-        return 1;
-    }
-}
-
-void encode_tree(node_t **leaf_list, file_info_t *file_data)
-{
-    for (int i = 0; i < file_data->nb_diff_char; ++i) {
-        node_t *current = leaf_list[i];
-        if (current->type == LEAF) {
-            write(1, &current->character, 1);
-        }
-        while (current->parent != NULL) {
-            is_left_or_right(current) == 0 ? my_putstr("0") : my_putstr("1");
-            current = current->parent;
+    for (int i = 0; leaf_path[i] != NULL; ++i) {
+        write(1, &leaf_path[i][0], 1);
+        for (int j = 1; leaf_path[i][j] != '\0'; ++j) {
+            write(1, &leaf_path[i][j], 1);
         }
         my_putstr("|");
     }

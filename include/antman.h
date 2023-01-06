@@ -43,7 +43,6 @@ typedef struct tree_data_t {
     node_t **leaf_list;
 } tree_data_t;
 
-
 // Error Case
 int check_arg_validity(int argc, char **argv);
 void analyse_file_content(char *filepath, file_info_t *file_content);
@@ -52,12 +51,12 @@ void analyse_file_content(char *filepath, file_info_t *file_content);
 void my_sort(int *array, char *str, int size_array);
 void create_all_leaf(file_info_t *file_data, tree_data_t *tree);
 void create_tree(file_info_t *file_data, tree_data_t *tree);
-int is_left_or_right(node_t *node);
-void encode_tree(node_t **leaf_list, file_info_t *file_data);
+void encode_tree(char **leaf_path);
 int *count_size_path_leaf(file_info_t *file_data, tree_data_t *tree);
 char **get_all_leaf_path(file_info_t *file_data, tree_data_t *tree);
-void encode_file_with_tree(file_info_t *file_data, tree_data_t *tree);
-void free_tree(tree_data_t *tree);
+char *change_file_content_rep(file_info_t *file_data, char **leaf_path);
+void free_tree_and_leaf(tree_data_t *tree, file_info_t *file_data,
+    char **leaf_path, char *new_file_rep);
 node_t *ini_list(void);
 void append_node(node_t **head, char character, int value, int type);
 void insert_node(node_t **head, node_t *node, int index);
