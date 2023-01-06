@@ -20,6 +20,6 @@ int *malloc_array(int size_array);
 void free_array(int *array);
 
 char **my_str_to_word(char *str, char *delimiter, int nb_word, int *size_word);
-char **adv_board(int nb_line, int *lines_size);
+char **malloc_adv_board(int nb_line, int *lines_size);
 
 #endif /* !MY_MALLOC */

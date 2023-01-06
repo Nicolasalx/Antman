@@ -16,7 +16,9 @@ SRC			=	src/main.c \
 				src/def_file_category.c \
 				src/free_all_data.c \
 				src/encode_tree.c \
-				src/free_tree.c
+				src/free_tree.c \
+				src/encode_file_with_tree.c \
+				src/get_path_leaf.c
 
 CFLAGS		=	-W -Wall -Wextra -I ../include
 

@@ -12,7 +12,7 @@
 char **my_str_to_word(char *str, char *delimiter, int nb_word, int *size_word)
 {
     int size_str = my_strlen(str);
-    char **words = adv_board(nb_word, size_word);
+    char **words = malloc_adv_board(nb_word, size_word);
     int i_index = 0;
     int j_index = 0;
     int end_word = 0;

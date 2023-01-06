@@ -27,9 +27,11 @@ int main(int argc, char **argv)
         my_putstr("Grand fichier\n");
         create_tree(&file_data, &tree);
         encode_tree(tree.leaf_list, &file_data);
+        encode_file_with_tree(&file_data, &tree);
         free_tree(&tree);
     }
 
+    my_putstr("\n");
     free_all_data(&file_data);
     return 0;
 }

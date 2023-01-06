@@ -8,8 +8,10 @@
 #include "antman.h"
 #include "my_string.h"
 #include <stdlib.h>
+#include <unistd.h>
 
-int is_left_or_right(node_t *node) {
+int is_left_or_right(node_t *node)
+{
     if (node->parent->left == node) {
         return 0;
     } else {
@@ -30,5 +32,5 @@ void encode_tree(node_t **leaf_list, file_info_t *file_data)
         }
         my_putstr("|");
     }
-    my_putstr("\n");
+    my_putstr(ENCODED_END_TREE);
 }

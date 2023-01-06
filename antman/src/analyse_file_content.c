@@ -31,5 +31,5 @@ void analyse_file_content(char *filepath, file_info_t *file_data)
         }
     }
     file_data->nb_diff_char = j;
-    free_str(buff);
+    file_data->content = buff;
 }

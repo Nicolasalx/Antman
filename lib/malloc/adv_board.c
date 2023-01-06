@@ -7,7 +7,7 @@
 
 #include <stdlib.h>
 
-char **adv_board(int nb_line, int *lines_size)
+char **malloc_adv_board(int nb_line, int *lines_size)
 {
     int i;
     int j;

@@ -11,6 +11,7 @@
     #include "my_error.h"
 
     #define ASCII_RANGE 256
+    #define ENCODED_END_TREE "__"
 
     #define LEAF 0
     #define BRANCH 1
@@ -20,6 +21,7 @@
     #define CAP_BIG_FILE 8
 
 typedef struct file_info_t {
+    char *content;
     int nb_diff_char;
     char *character;
     int *occur_char;
@@ -50,15 +52,23 @@ void analyse_file_content(char *filepath, file_info_t *file_content);
 void my_sort(int *array, char *str, int size_array);
 void create_all_leaf(file_info_t *file_data, tree_data_t *tree);
 void create_tree(file_info_t *file_data, tree_data_t *tree);
+int is_left_or_right(node_t *node);
 void encode_tree(node_t **leaf_list, file_info_t *file_data);
+int *count_size_path_leaf(file_info_t *file_data, tree_data_t *tree);
+char **get_all_leaf_path(file_info_t *file_data, tree_data_t *tree);
+void encode_file_with_tree(file_info_t *file_data, tree_data_t *tree);
 void free_tree(tree_data_t *tree);
 node_t *ini_list(void);
 void append_node(node_t **head, char character, int value, int type);
 void insert_node(node_t **head, node_t *node, int index);
-node_t *remove_node(node_t **head, node_t *node);
+node_t *remove_node(node_t **head, node_t *node); 
 
 // Define algo
 int def_file_category(file_info_t *file_data);
+
+void set_bit_to_zero(char *c, int index_bit);
+void set_bit_to_one(char *c, int index_bit);
+void set_all_bit_to_zero(char *c);
 
 void free_all_data(file_info_t *file_data);
 

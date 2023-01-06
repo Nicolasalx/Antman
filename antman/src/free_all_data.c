@@ -10,6 +10,7 @@
 
 void free_all_data(file_info_t *file_data)
 {
+    free_str(file_data->content);
     free_str(file_data->character);
     free_array(file_data->occur_char);
 }
