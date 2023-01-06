@@ -13,6 +13,9 @@
     #define ASCII_RANGE 256
     #define ENCODED_END_TREE "__"
 
+    #define IS_EMPTY 0
+    #define IS_NOT_EMPTY 1
+
     #define LEAF 0
     #define BRANCH 1
 
@@ -45,6 +48,7 @@ typedef struct tree_data_t {
 
 // Error Case
 int check_arg_validity(int argc, char **argv);
+int is_file_not_empty(char *file_path);
 void analyse_file_content(char *filepath, file_info_t *file_content);
 
 // Linked list and tree

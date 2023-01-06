@@ -14,6 +14,10 @@ int main(int argc, char **argv)
     tree_data_t tree;
     if (check_arg_validity(argc, argv) != 0)
         return 84;
+    if (is_file_not_empty(argv[1]) == IS_EMPTY) {
+        my_putstr("\n");
+        return 0;
+    }
 
     analyse_file_content(argv[1], &file_data);
     if (error_manager(0) != 0)
@@ -22,7 +26,6 @@ int main(int argc, char **argv)
 
     if (def_file_category(&file_data) == SMALL_FILE) {
         my_putstr("Petit fichier\n");
-        // call algo small file
     } else {
         my_putstr("Grand fichier\n");
         create_tree(&file_data, &tree);
