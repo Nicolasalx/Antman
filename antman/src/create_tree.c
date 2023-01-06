@@ -41,16 +41,15 @@ node_t *create_branch(node_t *left_node, node_t *right_node)
 void create_tree(file_info_t *file_data, tree_data_t *tree)
 {
     create_all_leaf(file_data, tree);
-    node_t *head_tree = tree->head_tree;
 
-    while (head_tree != NULL && head_tree->next != NULL) {
-        node_t *lower_1 = head_tree;
-        node_t *lower_2 = head_tree->next;
+    while (tree->head_tree != NULL && tree->head_tree->next != NULL) {
+        node_t *lower_1 = tree->head_tree;
+        node_t *lower_2 = tree->head_tree->next;
         node_t *new_branch = create_branch(lower_1, lower_2);
-        remove_node(&head_tree, lower_1);
-        remove_node(&head_tree, lower_2);
-        insert_node(&head_tree, new_branch,
-        find_index_between(&head_tree, new_branch->value));
+        remove_node(&tree->head_tree, lower_1);
+        remove_node(&tree->head_tree, lower_2);
+        insert_node(&tree->head_tree, new_branch,
+        find_index_between(&tree->head_tree, new_branch->value));
     }
-    head_tree->parent = NULL;
+    tree->head_tree->parent = NULL;
 }

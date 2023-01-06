@@ -81,32 +81,3 @@ node_t *remove_node(node_t **head, node_t *node)
     node->next = NULL;
     return node;
 }
-
-/*void delete_list(node_t **head)
-{
-    if (head == NULL) {
-        return;
-    }
-    if (head != NULL) {
-        node_t *aSupprimer = head;
-        head = head;
-        free(aSupprimer);
-    }
-}*/
-
-/*void display_list(node_t **head)
-{
-    if (head == NULL) {
-        return;
-    }
-
-    node_t *current = head;
-
-    while (current != NULL)
-    {
-        my_putstr(my_nb_to_str(current->value));
-        my_putstr(" -> ");
-        current = current->next;
-    }
-    my_putstr("NULL\n");
-}*/

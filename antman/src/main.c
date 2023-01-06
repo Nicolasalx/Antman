@@ -24,7 +24,8 @@ int main(int argc, char **argv)
         return 84;
     my_sort(file_data.occur_char, file_data.character, file_data.nb_diff_char);
 
-    if (def_file_category(&file_data) == SMALL_FILE) {
+    if (def_file_category(&file_data) == SMALL_FILE ||
+        file_data.nb_diff_char <= 1) {
         my_putstr("Petit fichier\n");
     } else {
         my_putstr("Grand fichier\n");
