@@ -6,7 +6,11 @@
 ##
 
 SRC			=	src/main.c \
-				src/error_manager.c
+				src/error_manager.c \
+				src/check_arg_validity.c \
+				src/is_file_not_empty.c \
+				src/analyze_file_content.c \
+				src/recover_tree_from_file.c
 
 CFLAGS		=	-W -Wall -Wextra -I ../include
 

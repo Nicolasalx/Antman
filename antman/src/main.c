@@ -29,7 +29,6 @@ int main(int argc, char **argv)
         file_data.nb_diff_char <= 1) {
         my_putstr("Petit fichier\n");
     } else {
-        my_putstr("Grand fichier\n");
         create_tree(&file_data, &tree);
         char **leaf_path = get_all_leaf_path(&file_data, &tree);
         char *new_file_rep = change_file_content_rep(&file_data, leaf_path);
