@@ -2,7 +2,7 @@
 # $1 : texte à afficher avant la barre de chargement
 # $2 : nombre d'itérations
 # $3 : durée de chaque itération en secondes
-./antman/antman user_interface/decompress.txt 1 > user_interface/compress.txt
+.././antman/antman decompress.txt 1 > compress.txt
 ################## \\ Option Compression/Decompression //#########################
 Load_decompress_opt3() {
     {
