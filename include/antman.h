@@ -59,6 +59,7 @@ void encode_tree(char **leaf_path);
 int *count_size_path_leaf(file_info_t *file_data, tree_data_t *tree);
 char **get_all_leaf_path(file_info_t *file_data, tree_data_t *tree);
 char *change_file_content_rep(file_info_t *file_data, char **leaf_path);
+void encode_str_to_byte(char *str);
 void free_tree_and_leaf(tree_data_t *tree, file_info_t *file_data,
     char **leaf_path, char *new_file_rep);
 node_t *ini_list(void);
@@ -69,9 +70,10 @@ node_t *remove_node(node_t **head, node_t *node);
 // Define algo
 int def_file_category(file_info_t *file_data);
 
-void set_bit_to_zero(char *c, int index_bit);
-void set_bit_to_one(char *c, int index_bit);
-void set_all_bit_to_zero(char *c);
+void set_bit_to_zero(unsigned char *c, int index_bit);
+void set_bit_to_one(unsigned char *c, int index_bit);
+void set_all_bit_to_zero(unsigned char *c);
+int get_bit_value(unsigned char c, int index_bit);
 
 void free_all_data(file_info_t *file_data);
 

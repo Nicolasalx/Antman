@@ -9,7 +9,8 @@
 #include "my_malloc.h"
 #include <stdlib.h>
 
-void free_tree(node_t *current) {
+void free_tree(node_t *current)
+{
     if (current == NULL) {
         return;
     }

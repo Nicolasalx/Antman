@@ -19,7 +19,9 @@ SRC			=	src/main.c \
 				src/free_tree_and_leaf.c \
 				src/encode_file_with_tree.c \
 				src/get_path_leaf.c \
-				src/is_file_not_empty.c
+				src/is_file_not_empty.c \
+				src/encode_str_to_byte.c \
+				src/func_bit_manipulation.c
 
 CFLAGS		=	-W -Wall -Wextra -I ../include
 
