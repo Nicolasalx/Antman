@@ -2,7 +2,7 @@
 # $1 : texte à afficher avant la barre de chargement
 # $2 : nombre d'itérations
 # $3 : durée de chaque itération en secondes
-
+./antman/antman user_interface/decompress.txt 1 > user_interface/compress.txt
 ################## \\ Option Compression/Decompression //#########################
 Load_decompress_opt3() {
     {
@@ -134,21 +134,20 @@ Window() {
         "2" "Decompression" \
         "3" "Compression/Decompression" \
         "4" "Press this for help" 3>&1 1>&2 2>&3)
-
-case $choice in
-    1)
-        antman
-        ;;
-    2)
-        giantman
-        ;;
-    3)
-        Load_compress_opt3
-        ;;
-    4)
-        draw_help
-        ;;
-esac
+    case $choice in
+        1)
+            antman
+            ;;
+        2)
+            giantman
+            ;;
+        3)
+            Load_compress_opt3
+            ;;
+        4)
+            draw_help
+            ;;
+    esac
 }
 
 Window
