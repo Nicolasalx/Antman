@@ -30,12 +30,9 @@ typedef struct file_t {
 
 typedef struct node_t node_t;
 struct node_t {
-    int type;
     char character;
-    node_t *parent;
     node_t *left;
     node_t *right;
-    node_t *next;
 };
 
 typedef struct tree_t {

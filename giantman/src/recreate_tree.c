@@ -17,6 +17,26 @@ node_t *create_and_fill_leaf(char c)
     return new_leaf;
 }
 
+void link_leaf_left(node_t **leaf, node_t *parent)
+{
+    if (parent->left == NULL) {
+        parent->left = *leaf;
+    } else {
+        free(*leaf);
+        *leaf = parent->left;
+    }
+}
+
+void link_leaf_right(node_t **leaf, node_t *parent)
+{
+    if (parent->right == NULL) {
+        parent->right = *leaf;
+    } else {
+        free(*leaf);
+        *leaf = parent->right;
+    }
+}
+
 void recreate_all_leaf(tree_t *tree, int i_leaf, int j_bit, node_t *parent)
 {
     if (tree->leaf_list[i_leaf][j_bit] == '\0')
@@ -24,19 +44,9 @@ void recreate_all_leaf(tree_t *tree, int i_leaf, int j_bit, node_t *parent)
     node_t *new_leaf = create_and_fill_leaf(tree->leaf_list[i_leaf][0]);
 
     if (tree->leaf_list[i_leaf][j_bit] == '0') {
-        if (parent->left == NULL) {
-            parent->left = new_leaf;
-        } else {
-            free(new_leaf);
-            new_leaf = parent->left;
-        }
+        link_leaf_left(&new_leaf, parent);
     } else {
-        if (parent->right == NULL) {
-            parent->right = new_leaf;
-        } else {
-            free(new_leaf);
-            new_leaf = parent->right;
-        }
+        link_leaf_right(&new_leaf, parent);
     }
     recreate_all_leaf(tree, i_leaf, j_bit + 1, new_leaf);
 }

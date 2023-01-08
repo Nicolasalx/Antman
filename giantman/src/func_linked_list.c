@@ -11,6 +11,5 @@
 node_t *create_node(void)
 {
     node_t *new_node = malloc(sizeof(node_t));
-    new_node->next = NULL;
     return new_node;
 }
