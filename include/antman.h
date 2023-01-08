@@ -65,7 +65,7 @@ void free_tree_and_leaf(tree_data_t *tree, file_info_t *file_data,
 node_t *ini_list(void);
 void append_node(node_t **head, char character, int value, int type);
 void insert_node(node_t **head, node_t *node, int index);
-node_t *remove_node(node_t **head, node_t *node); 
+node_t *remove_node(node_t **head, node_t *node);
 
 // Define algo
 int def_file_category(file_info_t *file_data);
@@ -76,5 +76,7 @@ void set_all_bit_to_zero(unsigned char *c);
 int get_bit_value(unsigned char c, int index_bit);
 
 void free_all_data(file_info_t *file_data);
+
+void execute_encoding(file_info_t *file_data, tree_data_t *tree);
 
 #endif /* !ANTMAN */

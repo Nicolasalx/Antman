@@ -25,17 +25,7 @@ int main(int argc, char **argv)
         return 84;
     my_sort(file_data.occur_char, file_data.character, file_data.nb_diff_char);
 
-    if (def_file_category(&file_data) == SMALL_FILE ||
-        file_data.nb_diff_char <= 1) {
-        my_putstr("Petit fichier\n");
-    } else {
-        create_tree(&file_data, &tree);
-        char **leaf_path = get_all_leaf_path(&file_data, &tree);
-        char *new_file_rep = change_file_content_rep(&file_data, leaf_path);
-        encode_tree(leaf_path);
-        encode_str_to_byte(new_file_rep);
-        free_tree_and_leaf(&tree, &file_data, leaf_path, new_file_rep);
-    }
+    execute_encoding(&file_data, &tree);
 
     my_putstr("\n");
     free_all_data(&file_data);

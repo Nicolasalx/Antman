@@ -21,7 +21,8 @@ SRC			=	src/main.c \
 				src/get_path_leaf.c \
 				src/is_file_not_empty.c \
 				src/encode_str_to_byte.c \
-				src/func_bit_manipulation.c
+				src/func_bit_manipulation.c \
+				src/execute_encoding.c
 
 CFLAGS		=	-W -Wall -Wextra -I ../include
 

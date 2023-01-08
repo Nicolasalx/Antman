@@ -10,7 +10,13 @@ SRC			=	src/main.c \
 				src/check_arg_validity.c \
 				src/is_file_not_empty.c \
 				src/analyze_file_content.c \
-				src/recover_tree_from_file.c
+				src/recover_tree_from_file.c \
+				src/execute_decoding.c \
+				src/free_all_data.c \
+				src/free_tree_data.c \
+				src/func_linked_list.c \
+				src/recreate_tree.c \
+				src/func_bit_manipulation.c
 
 CFLAGS		=	-W -Wall -Wextra -I ../include
 

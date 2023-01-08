@@ -7,6 +7,7 @@
 
 #include "giantman.h"
 #include "my_string.h"
+#include "my_malloc.h"
 
 int main(int argc, char **argv)
 {
@@ -22,12 +23,9 @@ int main(int argc, char **argv)
     if (error_manager(0) != 0)
         return 84;
 
-    if (file_data.encoding_algo == ALGO_SMALL_FILE) {
+    execute_decoding(&file_data, &tree_data);
 
-    } else {
-        recover_tree_from_file(&file_data, &tree_data);
-    }
-
+    free_all_data(&file_data);
     my_putstr("\n");
     return 0;
 }
