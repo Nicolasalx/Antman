@@ -24,5 +24,5 @@ void set_all_bit_to_zero(unsigned char *c)
 
 int get_bit_value(unsigned char c, int index_bit)
 {
-    return ((c & (1 << index_bit)) >> index_bit);
+    return ((c >> index_bit) & 1);
 }

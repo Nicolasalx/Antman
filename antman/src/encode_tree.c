@@ -14,7 +14,7 @@ void encode_tree(char **leaf_path)
 {
     for (int i = 0; leaf_path[i] != NULL; ++i) {
         write(1, &leaf_path[i][0], 1);
-        for (int j = 1; leaf_path[i][j] != '\0'; ++j) {
+        for (int j = (my_strlen(leaf_path[i]) - 1); j >= 1; --j) {
             write(1, &leaf_path[i][j], 1);
         }
         my_putstr("|");
