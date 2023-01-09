@@ -16,7 +16,8 @@ SRC			=	src/main.c \
 				src/free_tree_data.c \
 				src/func_linked_list.c \
 				src/recreate_tree.c \
-				src/func_bit_manipulation.c
+				src/func_bit_manipulation.c \
+				src/print_decoded_file.c
 
 CFLAGS		=	-W -Wall -Wextra -I ../include
 

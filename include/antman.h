@@ -43,7 +43,7 @@ struct node_t {
 
 typedef struct tree_data_t {
     node_t *head_tree;
-    node_t **leaf_list;
+    char **leaf_list;
 } tree_data_t;
 
 // Error Case

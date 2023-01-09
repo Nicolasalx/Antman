@@ -15,6 +15,7 @@ void execute_decoding(file_t *file_data, tree_t *tree_data)
     } else {
         recover_tree_from_file(file_data, tree_data);
         recreate_tree(tree_data);
+        print_decoded_file(file_data, tree_data);
         free_tree_data(tree_data);
     }
 }

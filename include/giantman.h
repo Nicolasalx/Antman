@@ -22,9 +22,11 @@
     #define LEAF 0
     #define BRANCH 1
 
+    #define NB_BIT_CHAR 8
+
 typedef struct file_t {
     char *content;
-    int size_file;
+    long int size_file;
     int encoding_algo;
 } file_t;
 
@@ -40,6 +42,7 @@ typedef struct tree_t {
     char **leaf_list;
     int nb_leaf;
     int nb_bit_to_skip;
+    int begining_encoded_file;
 } tree_t;
 
 int check_arg_validity(int argc, char **argv);
@@ -50,6 +53,8 @@ void recover_tree_from_file(file_t *file_data, tree_t *tree_data);
 void free_all_data(file_t *file_data);
 void free_tree_data(tree_t *tree_data);
 void recreate_tree(tree_t *tree);
+int get_bit_value(unsigned char c, int index_bit);
+void print_decoded_file(file_t *file, tree_t *tree);
 
 node_t *create_node(void);
 

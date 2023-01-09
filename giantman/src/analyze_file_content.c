@@ -11,7 +11,6 @@
 
 int determine_algo(file_t *file_data)
 {
-    file_data->size_file = my_strlen(file_data->content);
     int count_underscore = 0;
     int count_zero_one_verticalbar = 0;
     if (file_data->size_file < 10)
@@ -38,6 +37,7 @@ void analyze_file_content(char *filepath, file_t *file_data)
         print_error(error_manager(INVALID_FILE));
         return;
     }
+    file_data->size_file = my_filelen(filepath) - 1;
     file_data->content = my_file_to_str(filepath, file);
     file_data->encoding_algo = determine_algo(file_data);
 }
