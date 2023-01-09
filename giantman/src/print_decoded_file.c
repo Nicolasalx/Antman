@@ -18,7 +18,7 @@ void print_decoded_file(file_t *file, tree_t *tree)
         if (i == (file->size_file - 1)) {
             nb_bit_to_read = NB_BIT_CHAR - tree->nb_bit_to_skip;
         }
-        for (int j = 0; j < nb_bit_to_read; ++j) {
+        for (int j = nb_bit_to_read; j >= 0; --j) {
             int bit_value = get_bit_value(file->content[i], j);
 //            printf("--> i = %d, j = %d, bit = %d, bit_skip = %d, c = %c, current %p\n", i, j, bit_value, tree->nb_bit_to_skip, file->content[i], current);
             if (current->left == NULL && current->right == NULL) {
