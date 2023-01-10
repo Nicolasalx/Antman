@@ -20,6 +20,9 @@ void set_all_byte_to_zero(unsigned char *str, int size_str)
 
 void fill_str_with_bit(char *str, int size_str, unsigned char *encoded_str)
 {
+//    write(1, "\n\n", 2);
+//    write(1, str, size_str);
+//    write(1, "\n\n", 2);
     int index_bit = 0;
     int index_byte = 0;
     for (int i = 0; i < size_str; ++i) {
@@ -50,4 +53,5 @@ void encode_str_to_byte(char *str)
     set_all_byte_to_zero(encoded_str, size_encoded_str);
     fill_str_with_bit(str, size_str, encoded_str);
     write(1, encoded_str, size_encoded_str);
+    free(encoded_str);
 }

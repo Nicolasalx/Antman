@@ -41,7 +41,8 @@ char *change_file_content_rep(file_info_t *file_data, char **leaf_path)
 
     for (int i = 0; file_data->content[i] != '\0'; ++i) {
         int index_char = get_index_char(file_data->content[i], leaf_path);
-        for (int j = 1; leaf_path[index_char][j] != '\0'; ++j) {
+        int size_leaf_path = my_strlen(leaf_path[index_char]);
+        for (int j = (size_leaf_path - 1); j >= 1; --j) {
             new_file_rep[index] = leaf_path[index_char][j];
             ++ index;
         }
