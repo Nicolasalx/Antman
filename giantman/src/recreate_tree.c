@@ -26,7 +26,7 @@ int find_index_between(node_t **head, int value)
 
     int i = 0;
     node_t *current = *head;
-    for (; current->value <= value; ++i) {
+    for (; current->value < value; ++i) {
         if (current->next == NULL) {
             return (i + 1);
         }
@@ -46,34 +46,6 @@ node_t *create_branch(node_t *left_node, node_t *right_node)
     return new_branch;
 }
 
-void print_node(node_t *node, int depth, int side) {
-    if (!node) return;
-
-    for (int i = 0; i < depth; i++) {
-        printf("   ");
-    }
-
-    if (node->type == 0) {
-        printf("[%c, %d]", node->character, node->value);
-    } else {
-        printf("[%d]", node->value);
-    }
-
-    if(side == 0)
-        printf(" (root)\n");
-    else if(side == 1)
-        printf(" (left)\n");
-    else if(side == 2)
-        printf(" (right)\n");
-
-    print_node(node->left, depth + 1, 1);
-    print_node(node->right, depth + 1, 2);
-}
-
-void print_huffman_tree(tree_t *tree) {
-    print_node(tree->head, 0, 0);
-}
-
 void recreate_tree(file_t *file_data, tree_t *tree)
 {
     create_all_leaf(file_data, tree);
@@ -87,5 +59,4 @@ void recreate_tree(file_t *file_data, tree_t *tree)
         insert_node(&tree->head, new_branch,
         find_index_between(&tree->head, new_branch->value));
     }
-//    print_huffman_tree(tree);
 }

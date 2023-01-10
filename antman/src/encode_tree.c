@@ -7,20 +7,16 @@
 
 #include "antman.h"
 #include "my_string.h"
+#include "my_number.h"
 #include <stdlib.h>
 #include <unistd.h>
 
 void encode_tree(file_info_t *file_data)
 {
-    int i = 0;
-    for (; i < (file_data->nb_diff_char - 1); ++i) {
+    for (int i = 0; i < file_data->nb_diff_char; ++i) {
         write(1, &file_data->character[i], 1);
-        if (file_data->occur_char[i] == file_data->occur_char[i + 1]) {
-            write(1, "=", 1);
-        } else {
-            write(1, "<", 1);
-        }
+        my_putstr(my_nb_to_str(file_data->occur_char[i]));
+        my_putstr("|");
     }
-    write(1, &file_data->character[i], 1);
     my_putstr(ENCODED_END_TREE);
 }

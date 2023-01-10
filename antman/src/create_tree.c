@@ -38,34 +38,6 @@ node_t *create_branch(node_t *left_node, node_t *right_node)
     return new_branch;
 }
 
-void print_node(node_t *node, int depth, int side) {
-    if (!node) return;
-
-    for (int i = 0; i < depth; i++) {
-        printf("   ");
-    }
-
-    if (node->type == 0) {
-        printf("[%c, %d]", node->character, node->value);
-    } else {
-        printf("[%d]", node->value);
-    }
-
-    if(side == 0)
-        printf(" (root)\n");
-    else if(side == 1)
-        printf(" (left)\n");
-    else if(side == 2)
-        printf(" (right)\n");
-
-    print_node(node->left, depth + 1, 1);
-    print_node(node->right, depth + 1, 2);
-}
-
-void print_huffman_tree(tree_data_t *tree) {
-    print_node(tree->head_tree, 0, 0);
-}
-
 void create_tree(file_info_t *file_data, tree_data_t *tree)
 {
     create_all_leaf(file_data, tree);
@@ -80,5 +52,4 @@ void create_tree(file_info_t *file_data, tree_data_t *tree)
         find_index_between(&tree->head_tree, new_branch->value));
     }
     tree->head_tree->parent = NULL;
-//    print_huffman_tree(tree);
 }
