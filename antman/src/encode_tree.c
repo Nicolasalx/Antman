@@ -10,14 +10,17 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void encode_tree(char **leaf_path)
+void encode_tree(file_info_t *file_data)
 {
-    for (int i = 0; leaf_path[i] != NULL; ++i) {
-        write(1, &leaf_path[i][0], 1);
-        for (int j = (my_strlen(leaf_path[i]) - 1); j >= 1; --j) {
-            write(1, &leaf_path[i][j], 1);
+    int i = 0;
+    for (; i < (file_data->nb_diff_char - 1); ++i) {
+        write(1, &file_data->character[i], 1);
+        if (file_data->occur_char[i] == file_data->occur_char[i + 1]) {
+            write(1, "=", 1);
+        } else {
+            write(1, "<", 1);
         }
-        my_putstr("|");
     }
+    write(1, &file_data->character[i], 1);
     my_putstr(ENCODED_END_TREE);
 }

@@ -8,46 +8,55 @@
 #include "giantman.h"
 #include <stdlib.h>
 
-node_t *create_and_fill_leaf(char c)
+void create_all_leaf(file_t *file_data, tree_t *tree)
 {
-    node_t *new_leaf = malloc(sizeof(node_t));
-    new_leaf->left = NULL;
-    new_leaf->right = NULL;
-    new_leaf->character = c;
-    return new_leaf;
-}
-
-void recreate_all_leaf(tree_t *tree, int i_leaf, int j_bit, node_t *parent)
-{
-    if (tree->leaf_list[i_leaf][j_bit] == '\0')
-        return;
-    node_t *new_leaf = NULL;
-
-    if (tree->leaf_list[i_leaf][j_bit] == '0') {
-        if (parent->left == NULL) {
-            new_leaf = create_and_fill_leaf(tree->leaf_list[i_leaf][0]);
-            parent->left = new_leaf;
-        } else {
-            new_leaf = parent->left;
-        }
-    } else {
-        if (parent->right == NULL) {
-            new_leaf = create_and_fill_leaf(tree->leaf_list[i_leaf][0]);
-            parent->right = new_leaf;
-        } else {
-            new_leaf = parent->right;
-        }
+    tree->head = ini_list();
+    for (int i = 0; i < file_data->nb_diff_char; ++i) {
+        printf("%c -> %d\n", file_data->character[i], file_data->occur_char[i]);
+        append_node(&tree->head, file_data->character[i],
+        file_data->occur_char[i], LEAF);
     }
-    recreate_all_leaf(tree, i_leaf, j_bit + 1, new_leaf);
 }
 
-void recreate_tree(tree_t *tree)
+int find_index_between(node_t **head, int value)
 {
-    tree->head = create_node();
-    tree->head->left = NULL;
-    tree->head->right = NULL;
+    if (*head == NULL) {
+        return 0;
+    }
 
-    for (int i = 0; tree->leaf_list[i] != NULL; ++i) {
-        recreate_all_leaf(tree, i, 1, tree->head);
+    int i = 0;
+    node_t *current = *head;
+    for (; current->value < value; ++i) {
+        if (current->next == NULL) {
+            return (i + 1);
+        }
+        current = current->next;
+    }
+    return i;
+}
+
+node_t *create_branch(node_t *left_node, node_t *right_node)
+{
+    node_t *new_branch = malloc(sizeof(node_t));
+    new_branch->type = BRANCH;
+    new_branch->value = left_node->value + right_node->value;
+    new_branch->left = left_node;
+    new_branch->right = right_node;
+    new_branch->next = NULL;
+    return new_branch;
+}
+
+void recreate_tree(file_t *file_data, tree_t *tree)
+{
+    create_all_leaf(file_data, tree);
+
+    while (tree->head != NULL && tree->head->next != NULL) {
+        node_t *lower_1 = tree->head;
+        node_t *lower_2 = tree->head->next;
+        node_t *new_branch = create_branch(lower_1, lower_2);
+        remove_node(&tree->head, lower_1);
+        remove_node(&tree->head, lower_2);
+        insert_node(&tree->head, new_branch,
+        find_index_between(&tree->head, new_branch->value));
     }
 }

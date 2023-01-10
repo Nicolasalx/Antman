@@ -8,29 +8,31 @@
 #include "giantman.h"
 #include <unistd.h>
 #include <stdlib.h>
+#include "my_number.h"
 #include <stdio.h>
 
 void print_decoded_file(file_t *file, tree_t *tree)
 {
     int nb_bit_to_read = NB_BIT_CHAR;
     node_t *current = tree->head;
-    for (int i = tree->begining_encoded_file; i < file->size_file; ++i) {
+//    printf("begin : %d, size_file : %ld, nb_diff_char : %d, nb_bit_to_skip : %d\n", tree->begining_encoded_file, file->size_file, file->nb_diff_char, tree->nb_bit_to_skip);
+    for (int i = (tree->begining_encoded_file); i < file->size_file; ++i) {
         if (i == (file->size_file - 1)) {
             nb_bit_to_read = NB_BIT_CHAR - tree->nb_bit_to_skip;
         }
-        for (int j = nb_bit_to_read; j >= 0; --j) {
-            int bit_value = get_bit_value(file->content[i], j);
-//            printf("--> i = %d, j = %d, bit = %d, bit_skip = %d, c = %c, current %p\n", i, j, bit_value, tree->nb_bit_to_skip, file->content[i], current);
-            if (current->left == NULL && current->right == NULL) {
+        for (int j = 0; j < nb_bit_to_read; ++j) {
+            unsigned int bit_value = get_bit_value(file->content[i], j);
+//            write(1, my_nb_to_str(bit_value), 1);
+//            write(1, " ", 1);
+            if (bit_value == 0) {
+                current = current->left;
+            } else if (bit_value == 1) {
+                current = current->right;
+            }
+            if (current->type == LEAF) {
                 write(1, &current->character, 1);
                 current = tree->head;
             }
-            if (bit_value == 0 && current->left != NULL) {
-                current = current->left;
-            } else if (bit_value == 1 && current->right != NULL) {
-                current = current->right;
-            }
         }
-//        printf("\n");
     }
 }

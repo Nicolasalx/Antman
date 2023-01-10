@@ -55,7 +55,7 @@ void analyse_file_content(char *filepath, file_info_t *file_content);
 void my_sort(int *array, char *str, int size_array);
 void create_all_leaf(file_info_t *file_data, tree_data_t *tree);
 void create_tree(file_info_t *file_data, tree_data_t *tree);
-void encode_tree(char **leaf_path);
+void encode_tree(file_info_t *file_data);
 int *count_size_path_leaf(file_info_t *file_data, tree_data_t *tree);
 char **get_all_leaf_path(file_info_t *file_data, tree_data_t *tree);
 char *change_file_content_rep(file_info_t *file_data, char **leaf_path);

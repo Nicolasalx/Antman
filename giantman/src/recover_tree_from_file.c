@@ -10,58 +10,43 @@
 #include "my_malloc.h"
 #include <stdio.h>
 
-int count_nb_leaf(file_t *file_data)
+void count_nb_diff_char(file_t *file_data)
 {
-    int nb_leaf = 0;
-    for (int i = 0; i < (file_data->size_file - 3); ++i) {
+    file_data->nb_diff_char = 0;
+    for (int i = 0; i < (file_data->size_file - 2); ++i) {
         if (file_data->content[i] == '_' && file_data->content[i + 1] == '_') {
-            return nb_leaf;
+            return;
         }
-        ++ nb_leaf;
-        for (; i < file_data->size_file &&
-            file_data->content[i] != '|'; ++i) {
+        ++ file_data->nb_diff_char;
+        if ((file_data->content[i + 1] == '=' || file_data->content[i + 1] == '<') &&
+        (file_data->content[i + 1] != '_' && file_data->content[i + 2] != '_')) {
+            ++ i;
         }
     }
-    return nb_leaf;
-}
-
-void count_size_leaf_path(file_t *file_data, tree_t *tree_data)
-{
-    tree_data->nb_leaf = count_nb_leaf(file_data);
-    int *size_leaf = malloc_array(tree_data->nb_leaf);
-    int index_leaf = 0;
-    for (int i = 0; i < (file_data->size_file - 3); ++i) {
-        if (file_data->content[i] == '_' && file_data->content[i + 1] == '_') {
-            break;
-        }
-        ++ size_leaf[index_leaf];
-        for (; i < file_data->size_file &&
-            file_data->content[i] != '|'; ++i) {
-            ++ size_leaf[index_leaf];
-        }
-        ++ index_leaf;
-    }
-    tree_data->leaf_list = malloc_adv_board(tree_data->nb_leaf, size_leaf);
-    free_array(size_leaf);
 }
 
 void recover_tree_from_file(file_t *file_data, tree_t *tree_data)
 {
-    count_size_leaf_path(file_data, tree_data);
-    int index_leaf = 0;
-    for (int i = 0; i < (file_data->size_file - 3); ++i) {
+    count_nb_diff_char(file_data);
+    file_data->character = malloc_str(file_data->nb_diff_char);
+    file_data->occur_char = malloc_array(file_data->nb_diff_char);
+    int count_occur_char = 0;
+    int index = 0;
+    for (int i = 0; i < (file_data->size_file - 2); ++i) {
         if (file_data->content[i] == '_' && file_data->content[i + 1] == '_') {
             tree_data->nb_bit_to_skip = my_get_nb(&file_data->content[i + 2]);
             tree_data->begining_encoded_file = i + 3;
             return;
         }
-        tree_data->leaf_list[index_leaf][0] = file_data->content[i];
-        ++ i;
-        for (int j = 1; i < file_data->size_file &&
-            file_data->content[i] != '|'; ++i) {
-            tree_data->leaf_list[index_leaf][j] = file_data->content[i];
-            ++ j;
+        file_data->character[index] = file_data->content[i];
+        file_data->occur_char[index] = count_occur_char;
+        ++ index;
+        if ((file_data->content[i + 1] == '=' || file_data->content[i + 1] == '<') &&
+            (file_data->content[i + 1] != '_' && file_data->content[i + 2] != '_')) {
+            ++ i;
         }
-        ++ index_leaf;
+        if (file_data->content[i] == '<') {
+            ++ count_occur_char;
+        }
     }
 }

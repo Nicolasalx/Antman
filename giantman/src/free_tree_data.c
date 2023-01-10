@@ -21,6 +21,5 @@ void free_tree(node_t *current)
 
 void free_tree_data(tree_t *tree_data)
 {
-    free_board(tree_data->leaf_list, tree_data->nb_leaf);
     free_tree(tree_data->head);
 }

@@ -28,19 +28,23 @@ typedef struct file_t {
     char *content;
     long int size_file;
     int encoding_algo;
+    int nb_diff_char;
+    char *character;
+    int *occur_char;
 } file_t;
 
 typedef struct node_t node_t;
 struct node_t {
+    int type;
     char character;
+    int value;
     node_t *left;
     node_t *right;
+    node_t *next;
 };
 
 typedef struct tree_t {
     node_t *head;
-    char **leaf_list;
-    int nb_leaf;
     int nb_bit_to_skip;
     int begining_encoded_file;
 } tree_t;
@@ -52,10 +56,14 @@ void execute_decoding(file_t *file_date, tree_t *tree_data);
 void recover_tree_from_file(file_t *file_data, tree_t *tree_data);
 void free_all_data(file_t *file_data);
 void free_tree_data(tree_t *tree_data);
-void recreate_tree(tree_t *tree);
+void recreate_tree(file_t *file_data, tree_t *tree);
 int get_bit_value(unsigned char c, int index_bit);
 void print_decoded_file(file_t *file, tree_t *tree);
 
+node_t *ini_list(void);
+void append_node(node_t **head, char character, int value, int type);
+void insert_node(node_t **head, node_t *node, int index);
+node_t *remove_node(node_t **head, node_t *node);
 node_t *create_node(void);
 
 #endif /* !GIANTMAN */

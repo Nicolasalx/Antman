@@ -12,7 +12,7 @@
 int determine_algo(file_t *file_data)
 {
     int count_underscore = 0;
-    int count_zero_one_verticalbar = 0;
+    int count_sup_equal = 0;
     if (file_data->size_file < 10)
         return ALGO_SMALL_FILE;
     for (int i = 0; i < (file_data->size_file - 1) &&
@@ -20,12 +20,12 @@ int determine_algo(file_t *file_data)
         if (file_data->content[i] == '_' && file_data->content[i + 1] == '_') {
             count_underscore = 1;
         }
-        if (file_data->content[i] == '0' || file_data->content[i] == '1') {
-            ++ count_zero_one_verticalbar;
+        if (file_data->content[i] == '=' || file_data->content[i] == '<') {
+            ++ count_sup_equal;
         }
     }
-    if (count_underscore == 1 && count_zero_one_verticalbar >= 4 &&
-        (file_data->content[1] == '0' || file_data->content[1] == '1'))
+    if (count_underscore == 1 && count_sup_equal >= 1 &&
+        (file_data->content[1] == '=' || file_data->content[1] == '<'))
         return ALGO_BIG_FILE;
     return ALGO_SMALL_FILE;
 }
