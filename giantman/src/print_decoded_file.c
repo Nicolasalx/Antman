@@ -16,8 +16,8 @@ void print_decoded_file(file_t *file, tree_t *tree)
     int nb_bit_to_read = NB_BIT_CHAR;
     node_t *current = tree->head;
     for (int i = tree->begining_encoded_file; i < file->size_file; ++i) {
-        if (i >= (file->size_file - 1)) {
-            nb_bit_to_read = tree->nb_bit_to_skip;//NB_BIT_CHAR - tree->nb_bit_to_skip;
+        if (i >= (file->size_file - 1) && tree->nb_bit_to_skip != 0) {
+            nb_bit_to_read = tree->nb_bit_to_skip;
         }
         for (int j = 0; j < nb_bit_to_read; ++j) {
             unsigned int bit_value = get_bit_value(file->content[i], j);

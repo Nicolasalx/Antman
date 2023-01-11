@@ -10,7 +10,7 @@
 
     #include "my_error.h"
 
-    #define ASCII_RANGE 256
+    #define ASCII_RANGE 4097
     #define ENCODED_END_TREE "__"
 
     #define IS_EMPTY 0
