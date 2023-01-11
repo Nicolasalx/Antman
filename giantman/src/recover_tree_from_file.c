@@ -25,6 +25,19 @@ void count_nb_diff_char(file_t *file_data)
     }
 }
 
+void get_occur_char_of_file(file_t *file_data, char *nb_occur,
+    int *i, int *index_nb_occur)
+{
+    if (file_data->content[*i + 1] != '_' &&
+        file_data->content[*i + 2] != '_') {
+        ++ *i;
+    }
+    for (; *i < file_data->size_file && file_data->content[*i] != '|'; ++*i) {
+        nb_occur[*index_nb_occur] = file_data->content[*i];
+        ++ *index_nb_occur;
+    }
+}
+
 void recover_tree_from_file(file_t *file_data, tree_t *tree_data)
 {
     count_nb_diff_char(file_data);
@@ -41,13 +54,7 @@ void recover_tree_from_file(file_t *file_data, tree_t *tree_data)
         }
         file_data->character[index] = file_data->content[i];
         ini_str_to_zero(nb_occur, 12);
-        if (file_data->content[i + 1] != '_' && file_data->content[i + 2] != '_') {
-            ++ i;
-        }
-        for (; i < file_data->size_file && file_data->content[i] != '|'; ++i) {
-            nb_occur[index_nb_occur] = file_data->content[i];
-            ++ index_nb_occur;
-        }
+        get_occur_char_of_file(file_data, nb_occur, &i, &index_nb_occur);
         file_data->occur_char[index] = my_get_nb(nb_occur);
         ++ index;
         index_nb_occur = 0;
