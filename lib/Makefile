@@ -10,7 +10,8 @@ SRCFILE		=	file/count_nb_line.c \
 				file/count_lines_size.c \
 				file/my_file_to_str.c \
 				file/my_filelen.c \
-				file/my_open_file.c
+				file/my_open_file.c \
+				file/is_a_dir.c
 
 SRCMALLOC	=	malloc/board.c \
 				malloc/str.c \

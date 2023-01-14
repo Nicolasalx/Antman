@@ -16,5 +16,6 @@ char *my_file_to_str(char *filepath, int file);
 int count_nb_line(char *str);
 int count_size_first_line(char *str);
 int *count_lines_size(char *str, int nb_line);
+int is_a_dir(const char *path);
 
 #endif /* !MY_FILE */

@@ -13,7 +13,7 @@
 void analyse_file_content(char *filepath, file_info_t *file_data)
 {
     int file = open_file(filepath);
-    if (file == -1) {
+    if (file == -1 || is_a_dir(filepath) == 1) {
         print_error(error_manager(INVALID_FILE));
         return;
     }
