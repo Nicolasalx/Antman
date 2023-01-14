@@ -6,7 +6,7 @@
 ##
 
 MAIN		=	src/main.c
-MAINTEST	=	tests/main_test_giantman.c
+MAINTEST	=	../tests/tests_giantman/main_test_giantman.c
 
 SRC			=	src/error_manager.c \
 				src/check_arg_validity.c \
@@ -22,7 +22,7 @@ SRC			=	src/error_manager.c \
 				src/print_decoded_file.c
 
 
-SRC_TESTS	=	tests/test_giantman.c
+SRC_TESTS	=	../tests/tests_giantman/test_giantman.c
 
 CFLAGS		=	-W -Wall -Wextra -I ../include
 
@@ -58,7 +58,8 @@ re: fclean all
 
 unit_tests: fclean
 	cd $(SRCLIB) && $(MAKE)
-	gcc -o $(NAME_TESTS) $(SRC_TESTS) $(MAINTEST) $(SRC) $(LIBNAME) $(CFLAGS) $(RUN_TEST)
+	gcc -o $(NAME_TESTS) $(SRC_TESTS) $(MAINTEST) $(SRC) $(LIBNAME) \
+	$(CFLAGS) $(RUN_TEST)
 
 tests_run: unit_tests
 	./$(NAME_TESTS)
