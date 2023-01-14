@@ -19,6 +19,7 @@ void count_nb_diff_char(file_t *file_data)
             return;
         }
         ++ file_data->nb_diff_char;
+        ++ i;
         for (; i < file_data->size_file &&
             file_data->content[i] != '|'; ++i) {
         }
