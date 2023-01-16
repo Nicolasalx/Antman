@@ -38,5 +38,8 @@ void analyze_file_content(char *filepath, file_t *file_data)
     }
     file_data->size_file = my_filelen(filepath);
     file_data->content = my_file_to_str(filepath, file);
+    if (error_manager(0) != 0) {
+        return;
+    }
     file_data->encoding_algo = determine_algo(file_data);
 }

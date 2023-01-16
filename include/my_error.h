@@ -13,6 +13,8 @@
     #define INVALID_OPTION 2
     #define INVALID_FILE 3
     #define OPTION_NOT_CORRESPONDING_TO_FILE 4
+    #define MALLOC_ERROR 5
+    #define READ_ERROR 6
 
 int error_manager(int error_detected);
 void print_error(int error);

@@ -24,7 +24,7 @@
 
     #define NB_BIT_CHAR 8
 
-    #define FILE_SIZE_LIMIT 50000000
+    #define FILE_SIZE_LIMIT 75000000
 
 typedef struct file_t {
     char *content;

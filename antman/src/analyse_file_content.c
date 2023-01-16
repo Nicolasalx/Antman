@@ -10,15 +10,8 @@
 #include "my_string.h"
 #include "my_malloc.h"
 
-void analyse_file_content(char *filepath, file_info_t *file_data)
+void fill_file_data(char *buff, file_info_t *file_data)
 {
-    int file = open_file(filepath);
-    if (file == -1 || is_a_dir(filepath) == 1 ||
-        my_filelen(filepath) > FILE_SIZE_LIMIT) {
-        print_error(error_manager(INVALID_FILE));
-        return;
-    }
-    char *buff = my_file_to_str(filepath, file);
     int j = 0;
     file_data->character = malloc_str(ASCII_RANGE);
     file_data->occur_char = malloc_array(ASCII_RANGE);
@@ -32,4 +25,19 @@ void analyse_file_content(char *filepath, file_info_t *file_data)
     }
     file_data->nb_diff_char = j;
     file_data->content = buff;
+}
+
+void analyse_file_content(char *filepath, file_info_t *file_data)
+{
+    int file = open_file(filepath);
+    if (file == -1 || is_a_dir(filepath) == 1 ||
+        my_filelen(filepath) > FILE_SIZE_LIMIT) {
+        print_error(error_manager(INVALID_FILE));
+        return;
+    }
+    char *buff = my_file_to_str(filepath, file);
+    if (error_manager(0) != 0) {
+        return;
+    }
+    fill_file_data(buff, file_data);
 }
