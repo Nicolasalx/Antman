@@ -14,7 +14,7 @@ int is_file_not_empty(char *file_path)
     if (file == -1) {
         return IS_NOT_EMPTY;
     }
-    if (my_filelen(file_path) > 1) {
+    if (my_filelen(file_path) > 0) {
         return IS_NOT_EMPTY;
     }
     return IS_EMPTY;
