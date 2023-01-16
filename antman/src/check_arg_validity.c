@@ -7,31 +7,28 @@
 
 #include "antman.h"
 #include "my_number.h"
-#include <stdlib.h>
-#include <stdio.h>
 #include "my_string.h"
 
 int check_file_extenstion(char *filepath, int option)
 {
-    int size = my_strlen(filepath); int mal = 0;
-    for (int x = size; filepath[x] != '.' && x >= 0; --x)
-        ++mal;
-    --mal; int len = 0; len = size - mal; char *dest = malloc(mal + 1);
-    int ctr = 0;
-    for (int x = len; filepath[x] != '\0'; ++x) {
-        dest[ctr] = filepath[x]; 
-        ++ctr;
-    } dest[ctr] = '\0';
-    if (option == 1 && my_strcmp(dest, "lyr") == 0) {
-        return TRUE;
+    char file_ext[6];
+    ini_str_to_zero(file_ext, 6);
+    int index_ext = 0;
+    for (int i = (my_strlen(filepath) - 1); i >= 0 && filepath[i] != '.'; --i) {
+        file_ext[index_ext] = filepath[i];
+        ++index_ext;
+        if (index_ext > 5) {
+            return FALSE;
+        }
     }
-    if (option == 2 && my_strcmp(dest, "html") == 0) {
+    my_revstr(file_ext);
+    if (option == 1 && my_strcmp(file_ext, "lyr") == 0)
         return TRUE;
-    }
-    if (option == 3 && my_strcmp(dest, "ppm") == 0) {
+    if (option == 2 && my_strcmp(file_ext, "html") == 0)
         return TRUE;
-    }
-    free(dest); return FALSE;
+    if (option == 3 && my_strcmp(file_ext, "ppm") == 0)
+        return TRUE;
+    return FALSE;
 }
 
 int check_arg_validity(int argc, char **argv)
@@ -45,6 +42,9 @@ int check_arg_validity(int argc, char **argv)
         print_error(error_manager(INVALID_OPTION));
         return 84;
     }
-    printf("Return : [%d]\n", check_file_extenstion(argv[1], option));
+    if (check_file_extenstion(argv[1], option) != TRUE) {
+        print_error(error_manager(OPTION_NOT_CORRESPONDING_TO_FILE));
+        return 84;
+    }
     return 0;
 }

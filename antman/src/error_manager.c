@@ -32,6 +32,9 @@ void print_error(int error)
     case INVALID_FILE:
         write(2, "Invalid file\n", 13);
         break;
+    case OPTION_NOT_CORRESPONDING_TO_FILE:
+        write(2, "Option not corresponding to the file\n", 37);
+        break;
     default:
         write(2, "Unnamed error\n", 14);
         break;
