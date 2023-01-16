@@ -16,7 +16,6 @@ int main(int argc, char **argv)
     if (check_arg_validity(argc, argv) != 0)
         return 84;
     if (is_file_not_empty(argv[1]) == IS_EMPTY) {
-        my_putstr("\n");
         return 0;
     }
 
@@ -27,7 +26,6 @@ int main(int argc, char **argv)
 
     execute_encoding(&file_data, &tree);
 
-    my_putstr("\n");
     free_all_data(&file_data);
     return 0;
 }
