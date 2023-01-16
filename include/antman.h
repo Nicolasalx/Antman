@@ -23,6 +23,9 @@
     #define BIG_FILE 1
     #define CAP_BIG_FILE 2
 
+    #define TRUE 1
+    #define FALSE 0
+
 typedef struct file_info_t {
     char *content;
     int nb_diff_char;
