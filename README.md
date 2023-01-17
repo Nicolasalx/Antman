@@ -52,6 +52,7 @@ You only need to handle the compression and decompression of the file, not its v
 
 ## Authors
 __Thibaud Cathala__
+
 __Nicolas Alexandre__
 ## Acknowledgments
 Epitech for providing the project guidelines
