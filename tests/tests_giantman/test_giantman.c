@@ -42,28 +42,28 @@ TestSuite(Error_handling, .init = redirect_all_stdout);
 Test (Error_handling, error_invalid_file)
 {
     int argc = 3;
-    char *argv[] = {"./giantman", "tests/file_not_exist.txt", "1"};
+    char *argv[] = {"./giantman", "tests/file_not_exist.data", "1"};
     cr_assert_eq(main_test_giantman(argc, argv), 84);
 }
 
 Test (Error_handling, error_missing_arg)
 {
     int argc = 2;
-    char *argv[] = {"./giantman", "../tests/tests_giantman/test_file.txt"};
+    char *argv[] = {"./giantman", "../tests/tests_giantman/test_file.data"};
     cr_assert_eq(main_test_giantman(argc, argv), 84);
 }
 
 Test (Error_handling, error_too_much_arg)
 {
     int argc = 4;
-    char *argv[] = {"./giantman", "../tests/tests_giantman/test_file.txt", "1", "nothing"};
+    char *argv[] = {"./giantman", "../tests/tests_giantman/test_file.data", "1", "nothing"};
     cr_assert_eq(main_test_giantman(argc, argv), 84);
 }
 
 Test (Error_handling, error_invalid_option)
 {
     int argc = 3;
-    char *argv[] = {"./giantman", "../tests/tests_giantman/test_file.txt", "4"};
+    char *argv[] = {"./giantman", "../tests/tests_giantman/test_file.data", "4"};
     cr_assert_eq(main_test_giantman(argc, argv), 84);
 }
 
@@ -72,13 +72,13 @@ TestSuite(tests_compression, .init = redirect_all_stdout);
 Test (tests_compression, basic_text_1)
 {
     int argc = 3;
-    char *argv[] = {"./giantman", "../tests/tests_giantman/test_file_1.txt", "1"};
+    char *argv[] = {"./giantman", "../tests/tests_giantman/test_file_1.data", "1"};
     cr_assert_eq(main_test_giantman(argc, argv), 0);
 }
 
 Test (tests_compression, basic_text_2)
 {
     int argc = 3;
-    char *argv[] = {"./giantman", "../tests/tests_giantman/test_file_2.txt", "1"};
+    char *argv[] = {"./giantman", "../tests/tests_giantman/test_file_2.data", "1"};
     cr_assert_eq(main_test_giantman(argc, argv), 0);
 }
