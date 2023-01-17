@@ -53,6 +53,9 @@ You only need to handle the compression and decompression of the file, not its v
 ## Bonus
 We have use the [huffman coding](https://fr.wikipedia.org/wiki/Codage_de_Huffman).
 ![image](https://user-images.githubusercontent.com/114945623/212955224-05d23c73-b9aa-49d8-9196-ee22b927ea71.png)
+![image](https://user-images.githubusercontent.com/114945623/212956083-aae9babf-f86a-42ab-86a5-761cefc2421f.png)
+![image](https://user-images.githubusercontent.com/114945623/212956215-ad82d89a-e6fb-45f6-ab4c-7df5c75e1fe7.png)
+![image](https://user-images.githubusercontent.com/114945623/212956324-2e7ca275-ce93-428d-8d80-da2c4e3c8f70.png)
 
 ## Authors
 __Thibaud Cathala__
