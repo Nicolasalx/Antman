@@ -38,7 +38,7 @@ Please make sure to update tests as appropriate.
 ----------------------------------------------------------------------------------------
 # Antman
 Description
-The goal of this project is to compress data using lossless compression techniques. You will write two programs: __antman__ and giantman. The antman binary will take a file as input and compress it, while the giantman binary will take a compressed file as input and translate it back to its original state.
+The goal of this project is to compress data using lossless compression techniques. You will write two programs: '__antman__' and '__giantman__'. The antman binary will take a file as input and compress it, while the giantman binary will take a compressed file as input and translate it back to its original state.
 
 ## Compilation
 The project can be compiled using the Makefile, with the following rules:
@@ -54,15 +54,15 @@ antman takes two parameters: the path to the file to be compressed and a number 
 
 giantman takes two parameters: the path to the compressed file and the number corresponding to the type of file it originally was. The program will then print the readable file the compressed data was based on to the standard output.
 
-Error Handling
+## Error Handling
 Error messages should be written to the error output and the program should exit with the error code 84 (or 0 if there is no error).
 
-Turn-in methods
+## Turn-in methods
 You must have 2 folders at the root of your repository: a folder named antman with a binary named antman in it, and a folder named giantman with a binary named giantman in it. Each folder must contain a Makefile compiling the corresponding binary and a Makefile at the root must compile all binaries.
 
 BOTH binaries must be functional for you to be graded on this project. We cannot evaluate one without the other.
 
-Authorized functions
+## Authorized functions
 The only system calls allowed are the following ones:
 
 open
@@ -72,7 +72,7 @@ close
 malloc
 free
 stat
-Lossless Compression
+## Lossless Compression
 The type of compression used in this project is lossless compression. If the following command is executed:
 
 Copy code
@@ -86,7 +86,7 @@ This project will deal with 3 different types of input files:
 
 You only need to handle the compression and decompression of the file, not its validation.
 
-Authors
+## Authors
 Your name here
-Acknowledgments
+## Acknowledgments
 Epitech for providing the project guidelines
