@@ -50,6 +50,9 @@ This project will deal with 3 different types of input files:
 
 You only need to handle the compression and decompression of the file, not its validation.
 
+## Bonus
+We have use the [huffman coding].(https://fr.wikipedia.org/wiki/Codage_de_Huffman)
+
 ## Authors
 __Thibaud Cathala__
 
