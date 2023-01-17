@@ -42,7 +42,7 @@ void compress_file(z_stream *stream, size_t file_size, FILE *file)
         do {
             stream->avail_out = file_size;
             stream->next_out = out;
-            deflate(&stream, flush);
+            deflate(stream, flush);
             fwrite(out, 1, file_size - stream->avail_out, stdout);
         } while (stream->avail_out == 0);
     } while (flush != Z_FINISH);

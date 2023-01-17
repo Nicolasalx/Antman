@@ -18,7 +18,7 @@ size_t ini_decompression(const char *file_path, z_stream *stream)
     stream->zalloc = Z_NULL;
     stream->zfree = Z_NULL;
     stream->opaque = Z_NULL;
-    if (inflateInit2(&stream, 15 | 16) != Z_OK) {
+    if (inflateInit2(stream, 15 | 16) != Z_OK) {
         return 84;
     }
 
@@ -42,7 +42,7 @@ void decompress_file(z_stream *stream, size_t file_size, FILE *file)
         do {
             stream->avail_out = file_size;
             stream->next_out = out;
-            ret = inflate(&stream, Z_NO_FLUSH);
+            ret = inflate(stream, Z_NO_FLUSH);
             fwrite(out, 1, file_size - stream->avail_out, stdout);
         } while (stream->avail_out == 0);
     } while (ret != Z_STREAM_END);
