@@ -1,5 +1,3 @@
-#.././antman/antman decompress.txt 1 > compress.txt
-
 ################## \\ Option Compression/Decompression //#########################
 draw_feature() {
     ligne1="                  Welcolme on the features"
@@ -27,26 +25,14 @@ feature() {
 file_choose_1=""
 file_choose_2=""
 username="$USER"
-root="/home/$username/B-CPE-110-PAR-1-1-antman-thibaud.cathala/antman/antman"
 
 ls_antman_choose_file_start() {
     options=$(ls -1 | awk '{print NR " " $0}')
     selected=$(whiptail --title "Antman" --menu "Choose a file to zip" 20 78 10 $options 3>&1 1>&2 2>&3)
     option=$(echo "$options" | grep "^$selected " | awk '{print $2}')
     file_choose_1="$option"
-    if [ -z $selected ]; then Window; else ls_antman_choose_file_end; fi
-}
-
-ls_antman_choose_file_end() {
-    options=$(ls -1 | awk '{print NR " " $0}')
-    selected=$(whiptail --title "Antman" --menu "Choose an emplacement to set the file zip" 20 78 10 $options 3>&1 1>&2 2>&3)
-    option=$(echo "$options" | grep "^$selected " | awk '{print $2}')
-    file_choose_2="$option"
     if [ -z $selected ]; then Window; else Load_antman; fi
 }
-
-#Lancer à partir du path root
-#./giantman/giantman file_choose 1 > file_choose2
 
 Load_antman() {
     {
@@ -61,10 +47,10 @@ Load_antman() {
         sleep 0.1
         exit 1
     } | whiptail --title "Antman" --gauge "Loading.." 8 78 0
-    echo "FILE 1 : $file_choose_1"
-    echo "FILE 2 : $file_choose_2"
-    echo "PATH : $root"
-    $root $file_choose_1 1 > $file_choose_2
+
+    filename=$file_choose_1
+    extension="${filename##*.}"
+    ./antman_bonus $file_choose_1 > $file_choose_1.data
     show_percentage
 }
 
@@ -72,7 +58,7 @@ show_percentage() {
     fileName="$file_choose_1"
     mysize=$(find "$fileName" -printf "%s")
 
-    fileName2="$file_choose_2"
+    fileName2="$extension.data"
     mysize2=$(find "$fileName2" -printf "%s")
 
     percentage=$((($mysize * 100) / $mysize2))
@@ -82,8 +68,10 @@ show_percentage() {
     size2="${fileName2} size is ${mysize2} bytes."
     size_final="The size of our magnific program after decompression is $percentage"
     whiptail --title "Percentage" --msgbox "$size1\n$size2\n$size_final %" 10 78
+    rm $file_choose_1
     Window
 }
+
 
 
 antman() {
@@ -95,27 +83,19 @@ antman() {
 file_choose_1=""
 file_choose_2=""
 username="$USER"
-root="/home/$username/B-CPE-110-PAR-1-1-antman-thibaud.cathala/giantman/giantman"
 
 ls_giantman_choose_file_start() {
     options=$(ls -1 | awk '{print NR " " $0}')
     selected=$(whiptail --title "Giantman" --menu "Choose a file to dezip" 20 78 10 $options 3>&1 1>&2 2>&3)
     option=$(echo "$options" | grep "^$selected " | awk '{print $2}')
     file_choose_1="$option"
-    if [ -z $selected ]; then Window; else ls_giantman_choose_file_end; fi
-}
-
-ls_giantman_choose_file_end() {
-    options=$(ls -1 | awk '{print NR " " $0}')
-    selected=$(whiptail --title "Giantman" --menu "Choose an emplacement to set the file dezip" 20 78 10 $options 3>&1 1>&2 2>&3)
-    option=$(echo "$options" | grep "^$selected " | awk '{print $2}')
-    file_choose_2="$option"
     if [ -z $selected ]; then Window; else Load_giantman; fi
 }
 
 draw_comparaison_file() {
     ligne1="The comparaison between File1 and File2 is $comparaison %"
     whiptail --title "Comparaison" --msgbox "$ligne1" 8 70
+    rm $file_choose_1
     Window
 }
 
@@ -132,11 +112,15 @@ Load_giantman() {
         sleep 0.1
         exit 1
     } | whiptail --title "Giantman" --gauge "Loading.." 8 78 0
-    $root $file_choose_1 1 > $file_choose_2
+    fichier=$file_choose_1
+    emplacement=$(echo $fichier | awk -F. '{for(i=NF;i>0;i--)if(length($i)){print length($0) - length($i) - 1; exit}}')
+    stocker=$(echo "$fichier" | cut -c1-$emplacement)
+    ./giantman_bonus $file_choose_1 > $stocker
     draw_comparaison_file
 }
 
-giantman() {
+giantman()
+{
     ls_giantman_choose_file_start
 }
 
@@ -193,4 +177,7 @@ Window() {
     esac
 }
 
+username="$USER"
+cd pwd
+make re
 Window
