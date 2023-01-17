@@ -38,7 +38,7 @@ Please make sure to update tests as appropriate.
 ----------------------------------------------------------------------------------------
 # Antman
 Description
-The goal of this project is to compress data using lossless compression techniques. You will write two programs: ####antman and giantman. The antman binary will take a file as input and compress it, while the giantman binary will take a compressed file as input and translate it back to its original state.
+The goal of this project is to compress data using lossless compression techniques. You will write two programs: __antman__ and giantman. The antman binary will take a file as input and compress it, while the giantman binary will take a compressed file as input and translate it back to its original state.
 
 ## Compilation
 The project can be compiled using the Makefile, with the following rules:
