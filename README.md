@@ -37,8 +37,10 @@ stat
 ## Lossless Compression
 The type of compression used in this project is lossless compression. If the following command is executed:
 
-Copy code
-./antman/antman file.txt 1 > compressed.data ; ./giantman/giantman compressed.data 1 > uncompressed.data
+```bash
+./antman/antman file.txt 1 > compressed.data ;
+./giantman/giantman compressed.data 1 > uncompressed.data
+```
 The “file.txt” and “uncompressed.data” files should be strictly identical.
 
 This project will deal with 3 different types of input files:
