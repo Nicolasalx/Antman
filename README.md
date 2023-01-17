@@ -37,7 +37,7 @@ stat
 ## Lossless Compression
 The type of compression used in this project is lossless compression. If the following command is executed:
 
-```bash
+```c
 ./antman/antman file.txt 1 > compressed.data ;
 ./giantman/giantman compressed.data 1 > uncompressed.data
 ```
