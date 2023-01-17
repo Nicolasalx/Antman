@@ -8,8 +8,9 @@
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
 #include <criterion/hooks.h>
+#include "antman.h"
 
-#define TOTAL_NB_TEST (6)
+#define TOTAL_NB_TEST (7)
 
 int main_test_giantman(int argc, char **argv);
 
@@ -65,6 +66,14 @@ Test (Error_handling, error_invalid_option)
     int argc = 3;
     char *argv[] = {"./giantman", "../tests/tests_giantman/test_file.data", "4"};
     cr_assert_eq(main_test_giantman(argc, argv), 84);
+}
+
+TestSuite(Unit_test, .init = redirect_all_stdout);
+
+Test (Unit_test, error_manager)
+{
+    for (int i = -1; i < 6; ++i)
+        print_error(i);
 }
 
 TestSuite(tests_compression, .init = redirect_all_stdout);

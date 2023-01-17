@@ -16,7 +16,6 @@ int main_test_giantman(int argc, char **argv)
     if (check_arg_validity(argc, argv) != 0)
         return 84;
     if (is_file_not_empty(argv[1]) == IS_EMPTY) {
-        my_putstr("\n");
         return 0;
     }
     analyze_file_content(argv[1], &file_data);
@@ -26,6 +25,5 @@ int main_test_giantman(int argc, char **argv)
     execute_decoding(&file_data, &tree_data);
 
     free_all_data(&file_data);
-    my_putstr("\n");
     return 0;
 }
