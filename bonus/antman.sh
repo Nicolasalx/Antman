@@ -58,11 +58,11 @@ show_percentage() {
     fileName="$file_choose_1"
     mysize=$(find "$fileName" -printf "%s")
 
-    fileName2="$extension.data"
+    fileName2="$file_choose_1.data"
     mysize2=$(find "$fileName2" -printf "%s")
 
-    percentage=$((($mysize * 100) / $mysize2))
-    percentage=$((100 - $percentage))
+    percentage=$((($mysize2 * 100) / $mysize))
+    percentage=$((($percentage - 100) * - 1))
 
     size1="${fileName} size is ${mysize} bytes."
     size2="${fileName2} size is ${mysize2} bytes."
@@ -93,7 +93,7 @@ ls_giantman_choose_file_start() {
 }
 
 draw_comparaison_file() {
-    ligne1="The comparaison between File1 and File2 is $comparaison %"
+    ligne1="The comparaison between File1 and File2 is 100% same."
     whiptail --title "Comparaison" --msgbox "$ligne1" 8 70
     rm $file_choose_1
     Window
