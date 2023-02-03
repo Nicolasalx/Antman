@@ -2,7 +2,7 @@
 ## Description
 The goal of this project is to compress data using lossless compression techniques. You will write two programs: '__antman__' and '__giantman__'. The '__antman__' binary will take a file as input and compress it, while the '__giantman__' binary will take a compressed file as input and translate it back to its original state.
 
-## Compilation
+##  Compilation
 The project can be compiled using the Makefile, with the following rules:
 
 '__make__': compiles both the '__antman__' and '__giantman__' binaries
